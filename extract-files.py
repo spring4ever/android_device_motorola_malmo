@@ -89,6 +89,12 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libgui_buffer_shim_vendor.so'),
     'vendor/lib64/hw/anc.hal.so': blob_fixup()
         .add_needed('libion.so'),
+    (
+        'vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-goodixservice',
+        'vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-jv'
+    ): blob_fixup()
+        .replace_needed('android.hardware.biometrics.common-V3-ndk.so', 'android.hardware.biometrics.common-V4-ndk.so')
+        .replace_needed('android.hardware.biometrics.fingerprint-V3-ndk.so', 'android.hardware.biometrics.fingerprint-V4-ndk.so'),
 }  # fmt: skip
 
 
