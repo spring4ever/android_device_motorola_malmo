@@ -1,0 +1,10 @@
+# Charger
+/data/vendor/chargeonly(/.*)?                           u:object_r:chargeonly_data_file:s0
+/(mnt/vendor/persist|persist)/chargeonly(/.*)?          u:object_r:persist_chargeonly_file:s0
+/(vendor|system/vendor)/bin/charge_only_mode            u:object_r:charge_only_exec:s0
+
+# Fingerprint
+/vendor/bin/hw/android\.hardware\.biometrics\.fingerprint-service\.malmo u:object_r:hal_fingerprint_default_exec:s0
+
+# Touch
+/vendor/bin/hw/vendor\.lineage\.touch-service\.moto_sm6475 u:object_r:hal_lineage_touch_default_exec:s0

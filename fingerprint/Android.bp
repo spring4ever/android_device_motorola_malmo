@@ -1,0 +1,27 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "android.hardware.biometrics.fingerprint-service.malmo",
+    vintf_fragments: ["android.hardware.biometrics.fingerprint-service.malmo.xml"],
+    init_rc: ["android.hardware.biometrics.fingerprint-service.malmo.rc"],
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: [
+        "Fingerprint.cpp",
+        "PanelController.cpp",
+        "Session.cpp",
+        "SessionCallback.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "liblog",
+        "android.hardware.biometrics.common-V4-ndk",
+        "android.hardware.biometrics.fingerprint-V4-ndk",
+    ],
+    header_libs: ["generated_kernel_headers"],
+}
