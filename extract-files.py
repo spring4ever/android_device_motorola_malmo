@@ -91,10 +91,15 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libion.so'),
     (
         'vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-goodixservice',
-        'vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-jv'
+        'vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-jv',
+        'vendor/lib64/libgf_hal.so'
     ): blob_fixup()
         .replace_needed('android.hardware.biometrics.common-V3-ndk.so', 'android.hardware.biometrics.common-V4-ndk.so')
         .replace_needed('android.hardware.biometrics.fingerprint-V3-ndk.so', 'android.hardware.biometrics.fingerprint-V4-ndk.so'),
+        .binary_regex_replace(b'(?<=\x00)/default\x00', b'/wrapper\x00'),
+    'vendor/etc/vintf/manifest/manifest_IMoto_Fingerprint.xml': blob_fixup()
+        .regex_replace('IFingerprint/default', 'IFingerprint/wrapper')
+        .regex_replace('<instance>default</instance>', '<instance>wrapper</instance>'),
 }  # fmt: skip
 
 
